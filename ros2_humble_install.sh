@@ -18,12 +18,7 @@ function custom_echo() {
       echo -e "\033[31m[RO:BIT] $text\033[0m"      # 빨간색으로 출력
       ;;
     "yellow")
-      # 텍스트를 중앙에 정렬하기 위한 패딩을 계산합니다.
-      padding_length_left=$(( (terminal_width - ${#text} - 20) / 2 ))
-      padding_length_right=$(( terminal_width - ${#text} - 20 - padding_length_left ))
-      padding_left=$(printf "%*s" $padding_length_left "")                # 왼쪽 패딩
-      padding_right=$(printf "%*s" $padding_length_right "")              # 오른쪽 패딩
-      echo -e "\033[33m[RO:BIT] $padding_left$text$padding_right\033[0m"  # 노란색으로 출력
+      echo -e "\033[33m[RO:BIT] $text\033[0m"  # 노란색으로 출력
       ;;
     *)
       echo "$text"
@@ -77,9 +72,9 @@ padding_length=$(( (terminal_width - ${#text_art}) / 2 ))  # 중앙 패딩
 padding=$(printf "%*s" $padding_length "") 
 
 echo -e "\033[38;5;208m$padding$text_art\033[0m"               # 텍스트 아트 출력
-custom_echo "GITHUB : github.com/mkdir-sweetiepie" "yellow"    # 깃헙 주소 출력
+custom_echo "GITHUB : github.com/mkdir-sweetiepie" "green"    # 깃헙 주소 출력
 custom_echo "RO:BIT 18th JiHyeon Hong" "green"                 # 이름 출력
-custom_echo " Install ROS2 Humble" "green"                     # Ros 설치 정보 출력
+custom_echo "Install ROS2 Humble" "green"                     # Ros 설치 정보 출력
 
 loading_animation
 
@@ -116,7 +111,7 @@ case $ubuntu in
       sudo apt-get update && sudo apt upgrade -y
       
       custom_echo "install software-properties-common" "green"
-      udo apt-get install -y software-properties-common
+      sudo apt-get install -y software-properties-common
       custom_echo "add-apt-repository universe" "green"  
       sudo add-apt-repository -y universe
       custom_echo "install curl gnupg2 lsb-release build-essential" "green"
