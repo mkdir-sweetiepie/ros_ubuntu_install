@@ -125,30 +125,30 @@ case $ubuntu in
       custom_echo "updating" "green"
       sudo apt update  # 패키지 목록 업데이트
       custom_echo "installing ROS-humble-desktop-full" "green"
-      #sudo apt install -y ros-humble-desktop-full  # ROS Humble 설치
+      sudo apt install -y ros-humble-desktop-full  # ROS Humble 설치
       
       # ROS 설정을 ~/.bashrc에 추가하고 적용합니다.  
       custom_echo "setting bashrc" "green"
       echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
       source ~/.bashrc
       
-      # sudo apt update && sudo apt install -y \
-      #   python3-flake8-docstrings \
-      #   python3-pip \
-      #   python3-pytest-cov \
-      #   ros-dev-tools
+      sudo apt update && sudo apt install -y \
+        python3-flake8-docstrings \
+        python3-pip \
+        python3-pytest-cov \
+        ros-dev-tools
 
-      # python3 -m pip install -U \
-      #   flake8-blind-except \
-      #   flake8-builtins \
-      #   flake8-class-newline \
-      #   flake8-comprehensions \
-      #   flake8-deprecated \
-      #   flake8-import-order \
-      #   flake8-quotes \
-      #   "pytest>=5.3" \
-      #   pytest-repeat \
-      #   pytest-rerunfailures
+      python3 -m pip install -U \
+        flake8-blind-except \
+        flake8-builtins \
+        flake8-class-newline \
+        flake8-comprehensions \
+        flake8-deprecated \
+        flake8-import-order \
+        flake8-quotes \
+        "pytest>=5.3" \
+        pytest-repeat \
+        pytest-rerunfailures
 
       end_msg="ROS ${ros_version} Installed!"
       custom_echo "${end_msg}" "green"
@@ -202,22 +202,22 @@ case $ubuntu in
       echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
       source ~/.bashrc
       
-      # sudo apt update && sudo apt install -y \
-      #   python3-flake8-docstrings \
-      #   python3-pip \
-      #   python3-pytest-cov \
-      #   ros-dev-tools
+      sudo apt update && sudo apt install -y \
+        python3-flake8-docstrings \
+        python3-pip \
+        python3-pytest-cov \
+        ros-dev-tools
 
-      # sudo apt install -y \
-      #   python3-flake8-blind-except \
-      #   python3-flake8-builtins \
-      #   python3-flake8-class-newline \
-      #   python3-flake8-comprehensions \
-      #   python3-flake8-deprecated \
-      #   python3-flake8-import-order \
-      #   python3-flake8-quotes \
-      #   python3-pytest-repeat \
-      #   python3-pytest-rerunfailures
+      sudo apt install -y \
+        python3-flake8-blind-except \
+        python3-flake8-builtins \
+        python3-flake8-class-newline \
+        python3-flake8-comprehensions \
+        python3-flake8-deprecated \
+        python3-flake8-import-order \
+        python3-flake8-quotes \
+        python3-pytest-repeat \
+        python3-pytest-rerunfailures
 
       end_msg="ROS ${ros_version} Installed!"
       custom_echo "${end_msg}" "green"
