@@ -10,3 +10,12 @@ ros_humble_install <br>
 
 ros_humble_install (jetpack) <br>
 (https://nvidia-isaac-ros.github.io/getting_started/isaac_apt_repository.html#isaac-ros-buildfarm)
+
+## 한줄 설치 가이드
+This .sh file will install ROS2 Humble autometicaly.
+Commit this command in terminal
+
+```shell
+git clone https://github.com/mkdir-sweetiepie/ros_ubuntu_install.git
+cd ros_ubuntu_install
+```
