@@ -14,12 +14,13 @@ ros_humble_install (jetpack) <br>
 ## 한줄 설치 가이드
 This .sh file will install ROS2 Humble autometicaly. <br>
 Commit this command in terminal
-
+1. git repo install && cd
 ```shell
 git clone https://github.com/mkdir-sweetiepie/ros_ubuntu_install.git
 cd ros_ubuntu_install
 ```
 
+2. select version
 ### ROS2 HUMBLE on UBUNTU 20.04 focal
 ```shell
 chmod +x ros2_humble_install.sh 
