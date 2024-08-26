@@ -20,7 +20,20 @@ git clone https://github.com/mkdir-sweetiepie/ros_ubuntu_install.git
 cd ros_ubuntu_install
 ```
 
-### melodic
+### ROS2 HUMBLE on UBUNTU 20.04 focal
 ```shell
-./ros_melodic_install.sh
+chmod +x ros2_humble_install.sh 
+./ros2_humble_install.sh
+```
+
+### ROS2 HUMBLE on UBUNTU 22.04 jammy
+```shell
+chmod +x ros2_humble_install.sh 
+./ros2_humble_install.sh
+```
+
+### ROS2 HUMBLE on Jetpack 5.x or Jetson Nano 20.04 focal
+```shell
+chmod +x ros2_humble_install_on_jetson_20.04.sh
+./ros2_humble_install_on_jetson_20.04.sh 
 ```
