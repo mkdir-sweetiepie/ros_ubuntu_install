@@ -125,7 +125,7 @@ case $ubuntu in
       custom_echo "updating" "green"
       sudo apt update  # 패키지 목록 업데이트
       custom_echo "installing ROS-humble-desktop-full" "green"
-      sudo apt install -y ros-humble-desktop-full  # ROS Humble 설치
+      #sudo apt install -y ros-humble-desktop-full  # ROS Humble 설치
       
       # ROS 설정을 ~/.bashrc에 추가하고 적용합니다.  
       custom_echo "setting bashrc" "green"
