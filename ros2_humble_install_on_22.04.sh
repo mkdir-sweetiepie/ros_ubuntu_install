@@ -8,14 +8,13 @@
 function custom_echo() {
   text=$1                     # 첫 번째 인자는 출력할 텍스트입니다.
   color=$2                    # 두 번째 인자는 출력할 색상입니다.
-  terminal_width=$(tput cols) # 현재 터미널의 너비(컬럼 수)를 가져옵니다.
 
   case $color in
-  "green")
-    echo -e "\033[32m[RO:BIT] $text\033[0m" # 초록색으로 출력
-    ;;
   "red")
     echo -e "\033[31m[RO:BIT] $text\033[0m" # 빨간색으로 출력
+    ;;
+  "green")
+    echo -e "\033[32m[RO:BIT] $text\033[0m" # 초록색으로 출력
     ;;
   "yellow")
     echo -e "\033[33m[RO:BIT] $text\033[0m" # 노란색으로 출력
@@ -83,80 +82,8 @@ ubuntu=$VERSION_ID
 cv="Current Version Of Ubuntu Is : ${ubuntu}" # 현재 Ubuntu 버전을 출력합니다.
 custom_echo "${cv}" "green"
 
-case $ubuntu in
-"20.04")
-  # Ubuntu 20.04에서는 ROS Humble을 설치할 수 있습니다.
-  custom_echo "ROS Humble available!" "green"
-  custom_echo "### ROS Humble is an upcoming release of the Robot Operating System (ROS). ###" "yellow"
-  custom_echo "### It is being developed for Ubuntu 20.04 and aims to further expand the capabilities of ROS for robotics applications. ###" "yellow"
 
-  read -n 1 -p "Press Enter to start ROS installation, or any other key to exit..."
-
-  if [[ $REPLY == "" ]]; then
-    echo "[Check UTF-8]"
-    locale # check for UTF-8
-
-    sudo apt update && sudo apt install locales
-    sudo locale-gen en_US en_US.UTF-8
-    sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-    export LANG=en_US.UTF-8
-
-    locale # verify settings
-
-    custom_echo "Installing ROS Humble" "green"
-    loading_animation
-
-    # Install
-    custom_echo "updating package lists" "green"
-    sudo apt-get update && sudo apt upgrade -y
-
-    custom_echo "install software-properties-common" "green"
-    sudo apt-get install -y software-properties-common
-    custom_echo "add-apt-repository universe" "green"
-    sudo add-apt-repository -y universe
-    custom_echo "install curl gnupg2 lsb-release build-essential" "green"
-    sudo apt-get install -y curl gnupg2 lsb-release build-essential # 패키지 목록 업데이트 및 추가 패키지 설치
-    sudo apt update
-
-    custom_echo "echo ros resources" "green"
-    sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg # ROS 키를 추가
-    custom_echo "adding key" "green"
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list >/dev/null
-    custom_echo "updating" "green"
-    sudo apt update # 패키지 목록 업데이트
-    custom_echo "installing ROS-humble-desktop-full" "green"
-    sudo apt install -y ros-humble-desktop-full # ROS Humble 설치
-
-    # ROS 설정을 ~/.bashrc에 추가하고 적용합니다.
-    custom_echo "setting bashrc" "green"
-    echo "source /opt/ros/humble/setup.bash" >>~/.bashrc
-    source ~/.bashrc
-
-    sudo apt update && sudo apt install -y \
-      python3-flake8-docstrings \
-      python3-pip \
-      python3-pytest-cov \
-      ros-dev-tools
-
-    python3 -m pip install -U \
-      flake8-blind-except \
-      flake8-builtins \
-      flake8-class-newline \
-      flake8-comprehensions \
-      flake8-deprecated \
-      flake8-import-order \
-      flake8-quotes \
-      "pytest>=5.3" \
-      pytest-repeat \
-      pytest-rerunfailures
-
-    end_msg="ROS ${ros_version} Installed!"
-    custom_echo "${end_msg}" "green"
-  else
-    custom_echo "Installation Canceled" "red"
-  fi
-  ;;
-"22.04")
+if [[ $ubuntu == "22.04" ]]; then
   custom_echo "ROS Humble available!" "green"
   custom_echo "### ROS Humble is an upcoming release of the Robot Operating System (ROS). ###" "yellow"
   custom_echo "### It is being developed for Ubuntu 22.04 and aims to further expand the capabilities of ROS for robotics applications. ###" "yellow"
@@ -165,39 +92,36 @@ case $ubuntu in
 
   if [[ $REPLY == "" ]]; then
     echo "[Check UTF-8]"
-    locale # check for UTF-8
+    locale
 
     sudo apt update && sudo apt install locales
     sudo locale-gen en_US en_US.UTF-8
     sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
     export LANG=en_US.UTF-8
 
-    locale # verify settings
+    locale
 
     custom_echo "Installing ROS Humble" "green"
     loading_animation
 
-    # Install
     custom_echo "updating package lists" "green"
     sudo apt-get update && sudo apt upgrade -y
-
     custom_echo "install software-properties-common" "green"
-    udo apt-get install -y software-properties-common
+    sudo apt-get install -y software-properties-common
     custom_echo "add-apt-repository universe" "green"
     sudo add-apt-repository -y universe
     custom_echo "install curl gnupg2 lsb-release build-essential" "green"
-    sudo apt-get install -y curl gnupg2 lsb-release build-essential # 패키지 목록 업데이트 및 추가 패키지 설치
+    sudo apt-get install -y curl gnupg2 lsb-release build-essential
     sudo apt update
 
     custom_echo "echo ros resources" "green"
-    sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg # ROS 키를 추가
+    sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
     custom_echo "adding key" "green"
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list "updating" "green" >/dev/nullcustom_echo
-    sudo apt update # 패키지 목록 업데이트
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list >/dev/null
+    sudo apt update
     custom_echo "installing ROS-humble-desktop-full" "green"
-    sudo apt install -y ros-humble-desktop-full # ROS Humble 설치
+    sudo apt install -y ros-humble-desktop-full
 
-    # ROS 설정을 ~/.bashrc에 추가하고 적용합니다.
     custom_echo "setting bashrc" "green"
     echo "source /opt/ros/humble/setup.bash" >>~/.bashrc
     source ~/.bashrc
@@ -219,14 +143,12 @@ case $ubuntu in
       python3-pytest-repeat \
       python3-pytest-rerunfailures
 
-    end_msg="ROS ${ros_version} Installed!"
-    custom_echo "${end_msg}" "green"
+    custom_echo "ROS Humble Installed!" "green"
   else
     custom_echo "Installation Canceled" "red"
   fi
-  ;;
-*)
-  custom_echo "ROS version not available or out of distribution for this Ubuntu version. You might need to upgrade Ubuntu." "red"
-  exit 1
-  ;;
-esac
+else
+  custom_echo "Unsupported Ubuntu version!" "red"
+fi
+
+exit 0
