@@ -24,13 +24,13 @@ cd ros_ubuntu_install
 ### ROS2 HUMBLE on UBUNTU 20.04 focal
 ```shell
 chmod +x ros2_humble_install.sh 
-./ros2_humble_install.sh
+./ros2_humble_install_on_20.04.sh
 ```
 
 ### ROS2 HUMBLE on UBUNTU 22.04 jammy
 ```shell
 chmod +x ros2_humble_install.sh 
-./ros2_humble_install.sh
+./ros2_humble_install_on_22.04.sh
 ```
 
 ### ROS2 HUMBLE on Jetpack 5.x or Jetson Nano 20.04 focal
