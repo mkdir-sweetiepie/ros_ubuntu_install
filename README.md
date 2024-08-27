@@ -1,8 +1,8 @@
 # ros_ubuntu_install
 
-Copyright 2024 mkdir-sweetiepie
-https://github.com/mkdir-sweetiepie/ros_ubuntu_install
-Licensed under the MIT License
+Copyright 2024 mkdir-sweetiepie <br>
+https://github.com/mkdir-sweetiepie/ros_ubuntu_install  <br>
+Licensed under the MIT License <br>
 
 ## 참고 사이트
 ros_humble_install <br>
